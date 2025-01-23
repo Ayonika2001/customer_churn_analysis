@@ -8,18 +8,344 @@ import seaborn as sns
 
 
 ```python
-df=pd.read_csv(r"D:\Project work\Python Diwali Sales Analysis\Diwali Sales.csv")
+df=pd.read_csv(r"D:\Project work\11. Customer Churn Analysis\Customer Churn.csv")
 ```
 
 
 ```python
-df.shape
+df
 ```
 
 
 
 
-    (11251, 15)
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>customerID</th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>tenure</th>
+      <th>PhoneService</th>
+      <th>MultipleLines</th>
+      <th>InternetService</th>
+      <th>OnlineSecurity</th>
+      <th>...</th>
+      <th>DeviceProtection</th>
+      <th>TechSupport</th>
+      <th>StreamingTV</th>
+      <th>StreamingMovies</th>
+      <th>Contract</th>
+      <th>PaperlessBilling</th>
+      <th>PaymentMethod</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7590-VHVEG</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>1</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.85</td>
+      <td>29.85</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5575-GNVDE</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>34</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Mailed check</td>
+      <td>56.95</td>
+      <td>1889.5</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3668-QPYBK</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>53.85</td>
+      <td>108.15</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7795-CFOCW</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>45</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Bank transfer (automatic)</td>
+      <td>42.30</td>
+      <td>1840.75</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9237-HQITU</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>70.70</td>
+      <td>151.65</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7038</th>
+      <td>6840-RESVB</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>24</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>One year</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>84.80</td>
+      <td>1990.5</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7039</th>
+      <td>2234-XADUH</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>72</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>One year</td>
+      <td>Yes</td>
+      <td>Credit card (automatic)</td>
+      <td>103.20</td>
+      <td>7362.9</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7040</th>
+      <td>4801-JZAZL</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.60</td>
+      <td>346.45</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7041</th>
+      <td>8361-LTMKD</td>
+      <td>Male</td>
+      <td>1</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>4</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>74.40</td>
+      <td>306.6</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>7042</th>
+      <td>3186-AJIEK</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>66</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Two year</td>
+      <td>Yes</td>
+      <td>Bank transfer (automatic)</td>
+      <td>105.65</td>
+      <td>6844.5</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+<p>7043 rows × 21 columns</p>
+</div>
+
+
+
+
+```python
+df.columns
+```
+
+
+
+
+    Index(['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents',
+           'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
+           'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+           'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
+           'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn'],
+          dtype='object')
 
 
 
@@ -49,116 +375,153 @@ df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>User_ID</th>
-      <th>Cust_name</th>
-      <th>Product_ID</th>
-      <th>Gender</th>
-      <th>Age Group</th>
-      <th>Age</th>
-      <th>Marital_Status</th>
-      <th>State</th>
-      <th>Zone</th>
-      <th>Occupation</th>
-      <th>Product_Category</th>
-      <th>Orders</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th>unnamed1</th>
+      <th>customerID</th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>tenure</th>
+      <th>PhoneService</th>
+      <th>MultipleLines</th>
+      <th>InternetService</th>
+      <th>OnlineSecurity</th>
+      <th>...</th>
+      <th>DeviceProtection</th>
+      <th>TechSupport</th>
+      <th>StreamingTV</th>
+      <th>StreamingMovies</th>
+      <th>Contract</th>
+      <th>PaperlessBilling</th>
+      <th>PaymentMethod</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1002903</td>
-      <td>Sanskriti</td>
-      <td>P00125942</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>28</td>
+      <td>7590-VHVEG</td>
+      <td>Female</td>
       <td>0</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Healthcare</td>
-      <td>Auto</td>
+      <td>Yes</td>
+      <td>No</td>
       <td>1</td>
-      <td>23952.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.85</td>
+      <td>29.85</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1000732</td>
-      <td>Kartik</td>
-      <td>P00110942</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>35</td>
-      <td>1</td>
-      <td>Andhra Pradesh</td>
-      <td>Southern</td>
-      <td>Govt</td>
-      <td>Auto</td>
-      <td>3</td>
-      <td>23934.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>5575-GNVDE</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>34</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Mailed check</td>
+      <td>56.95</td>
+      <td>1889.5</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001990</td>
-      <td>Bindu</td>
-      <td>P00118542</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>35</td>
-      <td>1</td>
-      <td>Uttar Pradesh</td>
-      <td>Central</td>
-      <td>Automobile</td>
-      <td>Auto</td>
-      <td>3</td>
-      <td>23924.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>3668-QPYBK</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>53.85</td>
+      <td>108.15</td>
+      <td>Yes</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1001425</td>
-      <td>Sudevi</td>
-      <td>P00237842</td>
-      <td>M</td>
-      <td>0-17</td>
-      <td>16</td>
+      <td>7795-CFOCW</td>
+      <td>Male</td>
       <td>0</td>
-      <td>Karnataka</td>
-      <td>Southern</td>
-      <td>Construction</td>
-      <td>Auto</td>
-      <td>2</td>
-      <td>23912.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>No</td>
+      <td>No</td>
+      <td>45</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Bank transfer (automatic)</td>
+      <td>42.30</td>
+      <td>1840.75</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1000588</td>
-      <td>Joni</td>
-      <td>P00057942</td>
-      <td>M</td>
-      <td>26-35</td>
-      <td>28</td>
-      <td>1</td>
-      <td>Gujarat</td>
-      <td>Western</td>
-      <td>Food Processing</td>
-      <td>Auto</td>
+      <td>9237-HQITU</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
       <td>2</td>
-      <td>23877.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>70.70</td>
+      <td>151.65</td>
+      <td>Yes</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 21 columns</p>
 </div>
 
 
@@ -189,116 +552,153 @@ df.tail()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>User_ID</th>
-      <th>Cust_name</th>
-      <th>Product_ID</th>
-      <th>Gender</th>
-      <th>Age Group</th>
-      <th>Age</th>
-      <th>Marital_Status</th>
-      <th>State</th>
-      <th>Zone</th>
-      <th>Occupation</th>
-      <th>Product_Category</th>
-      <th>Orders</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th>unnamed1</th>
+      <th>customerID</th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>tenure</th>
+      <th>PhoneService</th>
+      <th>MultipleLines</th>
+      <th>InternetService</th>
+      <th>OnlineSecurity</th>
+      <th>...</th>
+      <th>DeviceProtection</th>
+      <th>TechSupport</th>
+      <th>StreamingTV</th>
+      <th>StreamingMovies</th>
+      <th>Contract</th>
+      <th>PaperlessBilling</th>
+      <th>PaymentMethod</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>11246</th>
-      <td>1000695</td>
-      <td>Manning</td>
-      <td>P00296942</td>
-      <td>M</td>
-      <td>18-25</td>
-      <td>19</td>
+      <th>7038</th>
+      <td>6840-RESVB</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>24</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>One year</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>84.80</td>
+      <td>1990.5</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7039</th>
+      <td>2234-XADUH</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>72</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>One year</td>
+      <td>Yes</td>
+      <td>Credit card (automatic)</td>
+      <td>103.20</td>
+      <td>7362.9</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7040</th>
+      <td>4801-JZAZL</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>11</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.60</td>
+      <td>346.45</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>7041</th>
+      <td>8361-LTMKD</td>
+      <td>Male</td>
       <td>1</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Chemical</td>
-      <td>Office</td>
+      <td>Yes</td>
+      <td>No</td>
       <td>4</td>
-      <td>370.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>74.40</td>
+      <td>306.6</td>
+      <td>Yes</td>
     </tr>
     <tr>
-      <th>11247</th>
-      <td>1004089</td>
-      <td>Reichenbach</td>
-      <td>P00171342</td>
-      <td>M</td>
-      <td>26-35</td>
-      <td>33</td>
+      <th>7042</th>
+      <td>3186-AJIEK</td>
+      <td>Male</td>
       <td>0</td>
-      <td>Haryana</td>
-      <td>Northern</td>
-      <td>Healthcare</td>
-      <td>Veterinary</td>
-      <td>3</td>
-      <td>367.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>11248</th>
-      <td>1001209</td>
-      <td>Oshin</td>
-      <td>P00201342</td>
-      <td>F</td>
-      <td>36-45</td>
-      <td>40</td>
-      <td>0</td>
-      <td>Madhya Pradesh</td>
-      <td>Central</td>
-      <td>Textile</td>
-      <td>Office</td>
-      <td>4</td>
-      <td>213.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>11249</th>
-      <td>1004023</td>
-      <td>Noonan</td>
-      <td>P00059442</td>
-      <td>M</td>
-      <td>36-45</td>
-      <td>37</td>
-      <td>0</td>
-      <td>Karnataka</td>
-      <td>Southern</td>
-      <td>Agriculture</td>
-      <td>Office</td>
-      <td>3</td>
-      <td>206.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>11250</th>
-      <td>1002744</td>
-      <td>Brumley</td>
-      <td>P00281742</td>
-      <td>F</td>
-      <td>18-25</td>
-      <td>19</td>
-      <td>0</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Healthcare</td>
-      <td>Office</td>
-      <td>3</td>
-      <td>188.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>No</td>
+      <td>No</td>
+      <td>66</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Two year</td>
+      <td>Yes</td>
+      <td>Bank transfer (automatic)</td>
+      <td>105.65</td>
+      <td>6844.5</td>
+      <td>No</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 21 columns</p>
 </div>
 
 
@@ -309,91 +709,40 @@ df.info()
 ```
 
     <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 11251 entries, 0 to 11250
-    Data columns (total 15 columns):
+    RangeIndex: 7043 entries, 0 to 7042
+    Data columns (total 21 columns):
      #   Column            Non-Null Count  Dtype  
     ---  ------            --------------  -----  
-     0   User_ID           11251 non-null  int64  
-     1   Cust_name         11251 non-null  object 
-     2   Product_ID        11251 non-null  object 
-     3   Gender            11251 non-null  object 
-     4   Age Group         11251 non-null  object 
-     5   Age               11251 non-null  int64  
-     6   Marital_Status    11251 non-null  int64  
-     7   State             11251 non-null  object 
-     8   Zone              11251 non-null  object 
-     9   Occupation        11251 non-null  object 
-     10  Product_Category  11251 non-null  object 
-     11  Orders            11251 non-null  int64  
-     12  Amount            11239 non-null  float64
-     13  Status            0 non-null      float64
-     14  unnamed1          0 non-null      float64
-    dtypes: float64(3), int64(4), object(8)
-    memory usage: 1.3+ MB
-    
-
-
-```python
-# Remove unrelated/blank columns.
-df.drop(['Status','unnamed1'],axis=1,inplace=True)
-```
-
-
-```python
-df.info()
-```
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 11251 entries, 0 to 11250
-    Data columns (total 13 columns):
-     #   Column            Non-Null Count  Dtype  
-    ---  ------            --------------  -----  
-     0   User_ID           11251 non-null  int64  
-     1   Cust_name         11251 non-null  object 
-     2   Product_ID        11251 non-null  object 
-     3   Gender            11251 non-null  object 
-     4   Age Group         11251 non-null  object 
-     5   Age               11251 non-null  int64  
-     6   Marital_Status    11251 non-null  int64  
-     7   State             11251 non-null  object 
-     8   Zone              11251 non-null  object 
-     9   Occupation        11251 non-null  object 
-     10  Product_Category  11251 non-null  object 
-     11  Orders            11251 non-null  int64  
-     12  Amount            11239 non-null  float64
-    dtypes: float64(1), int64(4), object(8)
+     0   customerID        7043 non-null   object 
+     1   gender            7043 non-null   object 
+     2   SeniorCitizen     7043 non-null   int64  
+     3   Partner           7043 non-null   object 
+     4   Dependents        7043 non-null   object 
+     5   tenure            7043 non-null   int64  
+     6   PhoneService      7043 non-null   object 
+     7   MultipleLines     7043 non-null   object 
+     8   InternetService   7043 non-null   object 
+     9   OnlineSecurity    7043 non-null   object 
+     10  OnlineBackup      7043 non-null   object 
+     11  DeviceProtection  7043 non-null   object 
+     12  TechSupport       7043 non-null   object 
+     13  StreamingTV       7043 non-null   object 
+     14  StreamingMovies   7043 non-null   object 
+     15  Contract          7043 non-null   object 
+     16  PaperlessBilling  7043 non-null   object 
+     17  PaymentMethod     7043 non-null   object 
+     18  MonthlyCharges    7043 non-null   float64
+     19  TotalCharges      7043 non-null   object 
+     20  Churn             7043 non-null   object 
+    dtypes: float64(1), int64(2), object(18)
     memory usage: 1.1+ MB
     
 
 
 ```python
-df.isnull().sum()
-```
-
-
-
-
-    User_ID              0
-    Cust_name            0
-    Product_ID           0
-    Gender               0
-    Age Group            0
-    Age                  0
-    Marital_Status       0
-    State                0
-    Zone                 0
-    Occupation           0
-    Product_Category     0
-    Orders               0
-    Amount              12
-    dtype: int64
-
-
-
-
-```python
-# remove null values
-df.dropna(inplace=True)
+# change data type
+df['TotalCharges']=df['TotalCharges'].replace(" ","0")
+df['TotalCharges']=df['TotalCharges'].astype(float)
 ```
 
 
@@ -402,26 +751,46 @@ df.info()
 ```
 
     <class 'pandas.core.frame.DataFrame'>
-    Index: 11239 entries, 0 to 11250
-    Data columns (total 13 columns):
+    RangeIndex: 7043 entries, 0 to 7042
+    Data columns (total 21 columns):
      #   Column            Non-Null Count  Dtype  
     ---  ------            --------------  -----  
-     0   User_ID           11239 non-null  int64  
-     1   Cust_name         11239 non-null  object 
-     2   Product_ID        11239 non-null  object 
-     3   Gender            11239 non-null  object 
-     4   Age Group         11239 non-null  object 
-     5   Age               11239 non-null  int64  
-     6   Marital_Status    11239 non-null  int64  
-     7   State             11239 non-null  object 
-     8   Zone              11239 non-null  object 
-     9   Occupation        11239 non-null  object 
-     10  Product_Category  11239 non-null  object 
-     11  Orders            11239 non-null  int64  
-     12  Amount            11239 non-null  float64
-    dtypes: float64(1), int64(4), object(8)
-    memory usage: 1.2+ MB
+     0   customerID        7043 non-null   object 
+     1   gender            7043 non-null   object 
+     2   SeniorCitizen     7043 non-null   int64  
+     3   Partner           7043 non-null   object 
+     4   Dependents        7043 non-null   object 
+     5   tenure            7043 non-null   int64  
+     6   PhoneService      7043 non-null   object 
+     7   MultipleLines     7043 non-null   object 
+     8   InternetService   7043 non-null   object 
+     9   OnlineSecurity    7043 non-null   object 
+     10  OnlineBackup      7043 non-null   object 
+     11  DeviceProtection  7043 non-null   object 
+     12  TechSupport       7043 non-null   object 
+     13  StreamingTV       7043 non-null   object 
+     14  StreamingMovies   7043 non-null   object 
+     15  Contract          7043 non-null   object 
+     16  PaperlessBilling  7043 non-null   object 
+     17  PaymentMethod     7043 non-null   object 
+     18  MonthlyCharges    7043 non-null   float64
+     19  TotalCharges      7043 non-null   float64
+     20  Churn             7043 non-null   object 
+    dtypes: float64(2), int64(2), object(17)
+    memory usage: 1.1+ MB
     
+
+
+```python
+df.isnull().sum().sum()
+```
+
+
+
+
+    np.int64(0)
+
+
 
 
 ```python
@@ -449,77 +818,68 @@ df.describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>User_ID</th>
-      <th>Age</th>
-      <th>Marital_Status</th>
-      <th>Orders</th>
-      <th>Amount</th>
+      <th>SeniorCitizen</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>1.123900e+04</td>
-      <td>11239.000000</td>
-      <td>11239.000000</td>
-      <td>11239.000000</td>
-      <td>11239.000000</td>
+      <td>7043.000000</td>
+      <td>7043.000000</td>
+      <td>7043.000000</td>
+      <td>7043.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>1.003004e+06</td>
-      <td>35.410357</td>
-      <td>0.420055</td>
-      <td>2.489634</td>
-      <td>9453.610858</td>
+      <td>0.162147</td>
+      <td>32.371149</td>
+      <td>64.761692</td>
+      <td>2279.734304</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.716039e+03</td>
-      <td>12.753866</td>
-      <td>0.493589</td>
-      <td>1.114967</td>
-      <td>5222.355869</td>
+      <td>0.368612</td>
+      <td>24.559481</td>
+      <td>30.090047</td>
+      <td>2266.794470</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>1.000001e+06</td>
-      <td>12.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
-      <td>188.000000</td>
+      <td>0.000000</td>
+      <td>18.250000</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.001492e+06</td>
-      <td>27.000000</td>
       <td>0.000000</td>
-      <td>2.000000</td>
-      <td>5443.000000</td>
+      <td>9.000000</td>
+      <td>35.500000</td>
+      <td>398.550000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>1.003064e+06</td>
-      <td>33.000000</td>
       <td>0.000000</td>
-      <td>2.000000</td>
-      <td>8109.000000</td>
+      <td>29.000000</td>
+      <td>70.350000</td>
+      <td>1394.550000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>1.004426e+06</td>
-      <td>43.000000</td>
-      <td>1.000000</td>
-      <td>3.000000</td>
-      <td>12675.000000</td>
+      <td>0.000000</td>
+      <td>55.000000</td>
+      <td>89.850000</td>
+      <td>3786.600000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>1.006040e+06</td>
-      <td>92.000000</td>
       <td>1.000000</td>
-      <td>4.000000</td>
-      <td>23952.000000</td>
+      <td>72.000000</td>
+      <td>118.750000</td>
+      <td>8684.800000</td>
     </tr>
   </tbody>
 </table>
@@ -529,26 +889,35 @@ df.describe()
 
 
 ```python
-# Change data type
-df['Amount']=df['Amount'].astype('int')
-```
-
-
-```python
-df['Amount'].dtypes
+df.duplicated(["customerID"]).sum()
 ```
 
 
 
 
-    dtype('int64')
+    np.int64(0)
 
 
 
 
 ```python
-# describe particular columns
-df[['Age','Orders','Amount']].describe()
+# Converted 0 and 1 values to yes or no to make it easier to understand.
+def conv(value):
+    if value==1:
+        return "Yes"
+    else:
+        return "No"
+        
+```
+
+
+```python
+df['SeniorCitizen']=df['SeniorCitizen'].apply(conv)
+```
+
+
+```python
+df.head()
 ```
 
 
@@ -572,332 +941,248 @@ df[['Age','Orders','Amount']].describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Age</th>
-      <th>Orders</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>11239.000000</td>
-      <td>11239.000000</td>
-      <td>11239.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>35.410357</td>
-      <td>2.489634</td>
-      <td>9453.610553</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>12.753866</td>
-      <td>1.114967</td>
-      <td>5222.355168</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>12.000000</td>
-      <td>1.000000</td>
-      <td>188.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>27.000000</td>
-      <td>2.000000</td>
-      <td>5443.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>33.000000</td>
-      <td>2.000000</td>
-      <td>8109.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>43.000000</td>
-      <td>3.000000</td>
-      <td>12675.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>92.000000</td>
-      <td>4.000000</td>
-      <td>23952.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-#rename columns
-df.rename(columns={'Marital_Status':'Relationship_Status'})
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>User_ID</th>
-      <th>Cust_name</th>
-      <th>Product_ID</th>
-      <th>Gender</th>
-      <th>Age Group</th>
-      <th>Age</th>
-      <th>Relationship_Status</th>
-      <th>State</th>
-      <th>Zone</th>
-      <th>Occupation</th>
-      <th>Product_Category</th>
-      <th>Orders</th>
-      <th>Amount</th>
+      <th>customerID</th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>tenure</th>
+      <th>PhoneService</th>
+      <th>MultipleLines</th>
+      <th>InternetService</th>
+      <th>OnlineSecurity</th>
+      <th>...</th>
+      <th>DeviceProtection</th>
+      <th>TechSupport</th>
+      <th>StreamingTV</th>
+      <th>StreamingMovies</th>
+      <th>Contract</th>
+      <th>PaperlessBilling</th>
+      <th>PaymentMethod</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1002903</td>
-      <td>Sanskriti</td>
-      <td>P00125942</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>28</td>
-      <td>0</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Healthcare</td>
-      <td>Auto</td>
+      <td>7590-VHVEG</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>No</td>
       <td>1</td>
-      <td>23952</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.85</td>
+      <td>29.85</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1000732</td>
-      <td>Kartik</td>
-      <td>P00110942</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>35</td>
-      <td>1</td>
-      <td>Andhra Pradesh</td>
-      <td>Southern</td>
-      <td>Govt</td>
-      <td>Auto</td>
-      <td>3</td>
-      <td>23934</td>
+      <td>5575-GNVDE</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>34</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Mailed check</td>
+      <td>56.95</td>
+      <td>1889.50</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001990</td>
-      <td>Bindu</td>
-      <td>P00118542</td>
-      <td>F</td>
-      <td>26-35</td>
-      <td>35</td>
-      <td>1</td>
-      <td>Uttar Pradesh</td>
-      <td>Central</td>
-      <td>Automobile</td>
-      <td>Auto</td>
-      <td>3</td>
-      <td>23924</td>
+      <td>3668-QPYBK</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>53.85</td>
+      <td>108.15</td>
+      <td>Yes</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1001425</td>
-      <td>Sudevi</td>
-      <td>P00237842</td>
-      <td>M</td>
-      <td>0-17</td>
-      <td>16</td>
-      <td>0</td>
-      <td>Karnataka</td>
-      <td>Southern</td>
-      <td>Construction</td>
-      <td>Auto</td>
-      <td>2</td>
-      <td>23912</td>
+      <td>7795-CFOCW</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>45</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Bank transfer (automatic)</td>
+      <td>42.30</td>
+      <td>1840.75</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1000588</td>
-      <td>Joni</td>
-      <td>P00057942</td>
-      <td>M</td>
-      <td>26-35</td>
-      <td>28</td>
-      <td>1</td>
-      <td>Gujarat</td>
-      <td>Western</td>
-      <td>Food Processing</td>
-      <td>Auto</td>
+      <td>9237-HQITU</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
       <td>2</td>
-      <td>23877</td>
-    </tr>
-    <tr>
-      <th>...</th>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>No</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>11246</th>
-      <td>1000695</td>
-      <td>Manning</td>
-      <td>P00296942</td>
-      <td>M</td>
-      <td>18-25</td>
-      <td>19</td>
-      <td>1</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Chemical</td>
-      <td>Office</td>
-      <td>4</td>
-      <td>370</td>
-    </tr>
-    <tr>
-      <th>11247</th>
-      <td>1004089</td>
-      <td>Reichenbach</td>
-      <td>P00171342</td>
-      <td>M</td>
-      <td>26-35</td>
-      <td>33</td>
-      <td>0</td>
-      <td>Haryana</td>
-      <td>Northern</td>
-      <td>Healthcare</td>
-      <td>Veterinary</td>
-      <td>3</td>
-      <td>367</td>
-    </tr>
-    <tr>
-      <th>11248</th>
-      <td>1001209</td>
-      <td>Oshin</td>
-      <td>P00201342</td>
-      <td>F</td>
-      <td>36-45</td>
-      <td>40</td>
-      <td>0</td>
-      <td>Madhya Pradesh</td>
-      <td>Central</td>
-      <td>Textile</td>
-      <td>Office</td>
-      <td>4</td>
-      <td>213</td>
-    </tr>
-    <tr>
-      <th>11249</th>
-      <td>1004023</td>
-      <td>Noonan</td>
-      <td>P00059442</td>
-      <td>M</td>
-      <td>36-45</td>
-      <td>37</td>
-      <td>0</td>
-      <td>Karnataka</td>
-      <td>Southern</td>
-      <td>Agriculture</td>
-      <td>Office</td>
-      <td>3</td>
-      <td>206</td>
-    </tr>
-    <tr>
-      <th>11250</th>
-      <td>1002744</td>
-      <td>Brumley</td>
-      <td>P00281742</td>
-      <td>F</td>
-      <td>18-25</td>
-      <td>19</td>
-      <td>0</td>
-      <td>Maharashtra</td>
-      <td>Western</td>
-      <td>Healthcare</td>
-      <td>Office</td>
-      <td>3</td>
-      <td>188</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>70.70</td>
+      <td>151.65</td>
+      <td>Yes</td>
     </tr>
   </tbody>
 </table>
-<p>11239 rows × 13 columns</p>
+<p>5 rows × 21 columns</p>
 </div>
 
 
 
-
-```python
-df.columns
-```
-
-
-
-
-    Index(['User_ID', 'Cust_name', 'Product_ID', 'Gender', 'Age Group', 'Age',
-           'Marital_Status', 'State', 'Zone', 'Occupation', 'Product_Category',
-           'Orders', 'Amount'],
-          dtype='object')
-
-
-
-# Exploratory Data Analysis
+# EDA
 
 
 ```python
-df.columns
-```
-
-
-
-
-    Index(['User_ID', 'Cust_name', 'Product_ID', 'Gender', 'Age Group', 'Age',
-           'Marital_Status', 'State', 'Zone', 'Occupation', 'Product_Category',
-           'Orders', 'Amount'],
-          dtype='object')
-
-
-
-# Gender
-
-
-```python
-ax=sns.countplot(x="Gender",data=df)
+plt.figure(figsize=(4,4))
+ax=sns.countplot(x="Churn",data=df)
 
 for bars in ax.containers:
     ax.bar_label(bars)
+plt.title("Count of Customers by Churn")
+plt.show()
+```
+
+
+    
+![png](output_16_0.png)
+    
+
+
+
+```python
+plt.figure(figsize=(4,4))
+gb=df.groupby("Churn").agg({"Churn":"count"})
+plt.pie(gb['Churn'], labels=gb.index,autopct="%1.2f%%")
+plt.title("Percentage of Churned Customers")
+plt.show()
+gb
+```
+
+
+    
+![png](output_17_0.png)
+    
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Churn</th>
+    </tr>
+    <tr>
+      <th>Churn</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>No</th>
+      <td>5174</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>1869</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+**From the given pie chart we can conclude that 26.54% of cutomers have churned out.**
+
+**Now lets explore the reason behind it.**
+
+
+```python
+plt.figure(figsize=(4,4))
+ax=sns.countplot(x='gender',data=df,hue='Churn')
+
+for bars in ax.containers:
+    plt.bar_label(bars)
+plt.title("Churn by Gender")
+plt.show()
 ```
 
 
@@ -908,61 +1193,72 @@ for bars in ax.containers:
 
 
 ```python
-df.groupby(['Gender'],as_index=False)['Amount'].sum().sort_values(by=['Amount'],ascending=False)
+plt.figure(figsize=(4,4))
+ax=sns.countplot(x='SeniorCitizen',data=df,hue="Churn")
+
+for bars in ax.containers:
+    plt.bar_label(bars)
+plt.title("Churn by Senior Citizen")
+plt.show()
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>F</td>
-      <td>74335853</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>M</td>
-      <td>31913276</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+    
+![png](output_21_0.png)
+    
 
 
 
 ```python
-Sales_gen=df.groupby(['Gender'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False)
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-sns.barplot(x='Gender',y='Amount',data=Sales_gen)
+# Example DataFrame
+data = {
+    'SeniorCitizen': [0, 1, 0, 1, 0, 0, 1, 0, 1, 0],
+    'Churn': ['Yes', 'No', 'Yes', 'Yes', 'No', 'No', 'No', 'Yes', 'Yes', 'No']
+}
+df = pd.DataFrame(data)
 
-for bars in plt.gca().containers:
-    plt.bar_label(bars,fmt='%.0f')
+# Calculate percentages
+stacked_data = (
+    df.groupby(['SeniorCitizen', 'Churn'])
+    .size()
+    .unstack(fill_value=0)
+)
+
+stacked_data_percentage = (stacked_data.T / stacked_data.T.sum()).T * 100
+
+# Plot stacked bar chart
+stacked_data_percentage.plot(
+    kind='bar',
+    stacked=True,
+    figsize=(6, 4),
+    color=['#76c7c0', '#ff6f61']
+)
+
+# Add percentage labels
+for i, row in stacked_data_percentage.iterrows():
+    cumulative = 0
+    for col in stacked_data_percentage.columns:
+        plt.text(
+            i, 
+            cumulative + row[col] / 2,  # Position the label in the middle of the stack
+            f"{row[col]:.1f}%", 
+            ha='center', 
+            va='center', 
+            color='white', 
+            fontsize=10
+        )
+        cumulative += row[col]
+
+plt.title("Churn by Senior Citizen", fontsize=14)
+plt.ylabel("Percentage")
+plt.xlabel("Senior Citizen")
+plt.xticks(ticks=[0, 1], labels=["No", "Yes"], rotation=0)
+plt.legend(title="Churn", loc="upper right")
 plt.show()
-    
 ```
 
 
@@ -971,204 +1267,22 @@ plt.show()
     
 
 
-**From above graph we can see that most of the buyers are female and the purchasing power of females are more than men.**
-
-# Age
+**Comparative a greater percentage of people in senior citizen category have churned.**
 
 
 ```python
-ax=sns.countplot(x="Age Group",data=df,hue="Gender")
-
-for bars in ax.containers:
-    ax.bar_label(bars)
-```
-
-
-    
-![png](output_25_0.png)
-    
-
-
-
-```python
-df.groupby(['Age Group'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False)
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Age Group</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2</th>
-      <td>26-35</td>
-      <td>42613442</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>36-45</td>
-      <td>22144994</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>18-25</td>
-      <td>17240732</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>46-50</td>
-      <td>9207844</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>51-55</td>
-      <td>8261477</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>55+</td>
-      <td>4080987</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>0-17</td>
-      <td>2699653</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-# Total amount vs age group
-sales_age=df.groupby(['Age Group'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False)
-
-sns.barplot(x='Age Group',y='Amount',data=sales_age)
-
-for container in plt.gca().containers:
-    plt.bar_label(container,fmt="%0.f")
+plt.figure(figsize=(9,5))
+sns.histplot(x='tenure',data=df,bins=50,hue="Churn")
 plt.show()
 ```
 
 
     
-![png](output_27_0.png)
+![png](output_24_0.png)
     
 
 
-**From above graoh we can see that most of the buyers are of age group between 26-35 years female**
-
-# State
-
-
-```python
-# Total number of Orders from top 10 States
-sales_state=df.groupby(['State'],as_index=False)['Orders'].sum().sort_values(by='Orders',ascending=False).head(10)
-
-sns.set(rc={"figure.figsize":(15,5)})
-sns.barplot(x='State',y='Orders',data=sales_state)
-```
-
-
-
-
-    <Axes: xlabel='State', ylabel='Orders'>
-
-
-
-
-    
-![png](output_30_1.png)
-    
-
-
-
-```python
-# Total amount/sales from top 10 States
-
-sales_state=df.groupby(['State'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False).head(10)
-
-sns.set(rc={"figure.figsize":(15,5)})
-sns.barplot(x='State',y='Amount',data=sales_state)
-
-for container in plt.gca().containers:
-    plt.bar_label(container,fmt="%0.f")
-plt.show()
-```
-
-
-    
-![png](output_31_0.png)
-    
-
-
-**From above graph we can see that unexpectedly most of the orders and total sales/amount are form Uttar Pradesh, Maharashtra and Karnataka respectively.**
-
-# Marital_status
-
-
-```python
-ax=sns.countplot(x='Marital_Status',data=df)
-
-sns.set(rc={'figure.figsize':(7,5)})
-for container in ax.containers:
-    ax.bar_label(container)
-```
-
-
-    
-![png](output_34_0.png)
-    
-
-
-
-```python
-Sales_State=df.groupby(['Marital_Status','Gender'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False)
-
-sns.set(rc={"figure.figsize":(7,5)})
-sns.barplot(x='Marital_Status',y='Amount',data=Sales_State,hue="Gender")
-
-```
-
-
-
-
-    <Axes: xlabel='Marital_Status', ylabel='Amount'>
-
-
-
-
-    
-![png](output_35_1.png)
-    
-
-
-**From above graph we can see that most of the buyers are married (woman) and they have high purchasing power.**
-
-# Occupation
+**People who have used our services for a long time have stayed and people who have used our services for 1 and 2 months have churned.**
 
 
 ```python
@@ -1178,117 +1292,83 @@ df.columns
 
 
 
-    Index(['User_ID', 'Cust_name', 'Product_ID', 'Gender', 'Age Group', 'Age',
-           'Marital_Status', 'State', 'Zone', 'Occupation', 'Product_Category',
-           'Orders', 'Amount'],
+    Index(['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents',
+           'tenure', 'PhoneService', 'MultipleLines', 'InternetService',
+           'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+           'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
+           'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn'],
           dtype='object')
 
 
 
 
 ```python
-ax=sns.countplot(x='Occupation',data=df)
-
-sns.set(rc={'figure.figsize':(20,6)})
-for container in ax.containers:
-    ax.bar_label(container)
+plt.figure(figsize=(5,4))
+ax=sns.countplot(x="Contract",data=df,hue="Churn")
+plt.title("Count of Customers by Contract")
+for bars in ax.containers:
+    ax.bar_label(bars)
 ```
 
 
     
-![png](output_39_0.png)
+![png](output_27_0.png)
     
 
+
+**People who have month to month contract are likely to churn thean from those who have 1 or 2 years of contract.**
 
 
 ```python
-Sales_State=df.groupby(['Occupation'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False)
+# Assuming your data is in a pandas DataFrame named 'df'
 
-sns.set(rc={"figure.figsize":(20,5)})
-sns.barplot(x='Occupation',y='Amount',data=Sales_State)
+# List of columns for subplots
+columns = ['PhoneService', 'MultipleLines', 'InternetService',
+           'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+           'StreamingTV', 'StreamingMovies']
+
+# Create subplots
+fig, axes = plt.subplots(nrows=3, ncols=3, figsize=(15, 10)) 
+
+# Iterate through columns and create countplots
+for i, column in enumerate(columns):
+    row = i // 3  # Calculate row index
+    col = i % 3  # Calculate column index
+    sns.countplot(data=df, x=column, ax=axes[row, col],hue=df['Churn'])
+    axes[row, col].set_title(column)
+    axes[row, col].tick_params(axis='x', rotation=45)  # Rotate x-axis labels for better readability
+
+# Adjust layout for better spacing
+plt.tight_layout()
+
+# Show the plot
+plt.show()
 ```
 
 
-
-
-    <Axes: xlabel='Occupation', ylabel='Amount'>
-
-
-
-
     
-![png](output_40_1.png)
+![png](output_29_0.png)
     
 
 
-**From above graph we can see that most of the buyers are from IT Sector,Healthcare,Aviation.**
-
-# Product Category
+**The countplots reveal that the majority of customers have phone service and internet service, with DSL being the most common type.  A significant portion of customers do not subscribe to online security, online backup, device protection, or tech support.  Streaming TV and movies are popular services among customers with internet service.**
 
 
 ```python
-ax=sns.countplot(x='Product_Category',data=df)
-
-sns.set(rc={'figure.figsize':(15,8)})
-for container in ax.containers:
-    ax.bar_label(container)
+plt.figure(figsize=(10,4))
+ax=sns.countplot(x='PaymentMethod',data=df,hue="Churn")
+plt.title("Churned Customers by PaymentMethod")
+for bars in ax.containers:
+    ax.bar_label(bars)
 ```
 
 
     
-![png](output_43_0.png)
+![png](output_31_0.png)
     
 
 
-
-```python
-Sales_State=df.groupby(['Product_Category'],as_index=False)['Amount'].sum().sort_values(by='Amount',ascending=False).head(10)
-
-sns.set(rc={"figure.figsize":(20,5)})
-sns.barplot(x='Product_Category',y='Amount',data=Sales_State)
-```
-
-
-
-
-    <Axes: xlabel='Product_Category', ylabel='Amount'>
-
-
-
-
-    
-![png](output_44_1.png)
-    
-
-
-**From above graph we can see that most of the sold products are from Food, Footwear and Electronics category.**
-
-
-```python
-# Top 10 most sold products
-Sales_State=df.groupby(['Product_ID'],as_index=False)['Orders'].sum().sort_values(by='Orders',ascending=False).head(10)
-
-sns.set(rc={"figure.figsize":(20,5)})
-sns.barplot(x='Product_ID',y='Orders',data=Sales_State)
-
-```
-
-
-
-
-    <Axes: xlabel='Product_ID', ylabel='Orders'>
-
-
-
-
-    
-![png](output_46_1.png)
-    
-
-
-## Conclusions
-
-**Married woman are age group 26-35 yrs from Uttar Pradesh, Maharashtra and Karnataka working in IT Sector,Healthcare,Aviation are more likely to buy products from Food, Footwear and Electronics category.** 
+**Customers is likely to churn when he is using electronic check as a payment method.**
 
 
 ```python
